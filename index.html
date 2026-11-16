@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thirubuvanam Cholan Silk Handloom Weavers Co.Op Society</title>
+<style>
+:root{--maroon:#7a1428;--gold:#b8863a;--cream:#fbf3e3;--ink:#2a1a14;--paper:#fffefb;--accent:#b8863a;--bg1:#2a0f14;--bg2:#120608;--wa:#25d366;}
+[data-theme="emerald"]{--accent:#1f6b4d;--maroon:#14432f;}
+[data-theme="plum"]{--accent:#8a2a6b;--maroon:#4a1240;}
+[data-theme="navy"]{--accent:#b8893b;--maroon:#0f2340;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:Georgia,"Noto Serif",serif;background:var(--paper);color:var(--ink);padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:900px;margin:0 auto;position:relative;}
+.view.active{display:block;}
+
+.topbar{position:sticky;top:0;z-index:60;background:#fff;display:flex;flex-direction:column;align-items:center;padding:12px 14px;border-bottom:1px solid #eee;gap:8px;text-align:center;}
+.topbar .brand{font-size:16px;font-weight:bold;letter-spacing:.5px;color:var(--maroon);cursor:pointer;}
+.navlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;font-family:Arial,sans-serif;font-size:12px;color:#4a3a30;}
+.navlinks a{font-weight:bold;cursor:pointer;white-space:nowrap;}
+
+.hero{position:relative;height:60vh;min-height:400px;max-height:560px;overflow:hidden;background:linear-gradient(160deg,var(--bg1),var(--bg2));}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease;}
+.hero-slide.active{opacity:1;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25) 0%,rgba(0,0,0,.05) 35%,rgba(10,4,5,.92) 100%);}
+.hero-content{position:absolute;left:0;right:0;bottom:0;padding:26px 22px;color:#fff;text-align:center;z-index:2;}
+.hero-content h1{font-size:28px;line-height:1.2;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+.hero-content .tagline{margin-top:7px;font-size:14px;opacity:.9;font-family:Arial,sans-serif;font-style:italic;}
+.hero-cta{display:flex;justify-content:center;gap:10px;margin-top:16px;}
+.hero-cta a{font-family:Arial,sans-serif;font-size:13px;font-weight:bold;padding:11px 18px;border-radius:4px;}
+.hero-cta .wa{background:var(--wa);color:#fff;}
+.hero-cta .ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);}
+
+.rating-block{text-align:center;padding:22px 20px 6px;}
+.rating-num{font-size:26px;color:var(--maroon);font-weight:bold;}
+.rating-hearts{color:var(--maroon);font-size:18px;letter-spacing:3px;margin:4px 0;}
+.rating-sub{font-family:Arial,sans-serif;font-size:12px;color:#8a7a6c;text-decoration:underline;}
+
+.section{padding:30px 20px 8px;}
+.section-head{text-align:center;margin-bottom:20px;}
+.section-head .eyebrow{font-family:Arial,sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);font-weight:bold;}
+.section-head h2{font-size:24px;margin-top:5px;font-style:italic;}
+.section-head p{font-family:Arial,sans-serif;font-size:13px;color:#6b5a4e;margin-top:4px;}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.item-card{background:#fff;border-radius:3px;overflow:hidden;box-shadow:0 2px 10px rgba(40,20,10,.08);display:flex;flex-direction:column;}
+.item-card.hidden{display:none;}
+.item-photo{width:100%;aspect-ratio:2/3;min-height:300px;background-size:cover;background-position:top center;position:relative;}
+.item-badge{position:absolute;top:8px;left:8px;background:var(--maroon);color:#fff;font-size:9px;font-family:Arial,sans-serif;font-weight:bold;padding:3px 7px;border-radius:3px;text-transform:uppercase;}
+.heart-ic{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:13px;color:#c04;}
+.item-body{padding:11px 12px;display:flex;flex-direction:column;flex:1;font-family:Arial,sans-serif;}
+.item-title{font-size:13px;color:#4a3a30;line-height:1.3;}
+.item-price{font-size:14px;font-weight:bold;color:var(--ink);margin-top:5px;}
+.item-price span{font-size:10px;color:#8a7a6c;font-weight:normal;}
+.shop-now{margin-top:9px;text-align:center;border:1px solid var(--maroon);color:var(--maroon);font-size:11px;font-weight:bold;padding:7px;border-radius:3px;}
+.item-wa{margin-top:7px;display:flex;align-items:center;justify-content:center;gap:5px;background:var(--wa);color:#fff;font-size:11px;font-weight:bold;padding:8px;border-radius:3px;}
+.item-wa svg{width:12px;height:12px;fill:#fff;}
+.view-more{display:block;width:100%;text-align:center;margin:18px auto 4px;font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:var(--maroon);background:none;border:1.5px solid var(--maroon);border-radius:999px;padding:11px;cursor:pointer;}
+
+.cats-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 10px;}
+.cat-card{text-align:center;font-family:Arial,sans-serif;background:none;border:none;cursor:pointer;}
+.cat-card .circle{width:68px;height:68px;border-radius:50%;background-size:cover;background-position:top center;border:2px solid var(--accent);margin:0 auto 7px;}
+.cat-card span{font-size:10.5px;color:#4a3a30;font-weight:bold;line-height:1.2;display:block;}
+
+.arch-row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;}
+.arch-card{flex-shrink:0;width:155px;text-align:center;font-family:Arial,sans-serif;cursor:pointer;}
+.arch-photo{width:155px;height:250px;background-size:cover;background-position:top center;border-radius:78px 78px 8px 8px;border:2px solid var(--accent);position:relative;overflow:hidden;}
+.arch-photo .label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);color:#fff;font-size:11px;font-weight:bold;padding:16px 6px 8px;}
+.arch-card .shopnow{margin-top:8px;font-size:11px;font-weight:bold;color:var(--maroon);}
+
+.story{margin:28px 20px;position:relative;border-radius:10px;overflow:hidden;min-height:260px;display:flex;align-items:center;}
+.story-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.story-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,4,5,.88) 45%,rgba(10,4,5,.1));}
+.story-text{position:relative;z-index:1;color:#f3e9dc;padding:26px 22px;max-width:70%;}
+.story-text .eyebrow{font-family:Arial,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:bold;}
+.story-text h2{font-size:19px;margin:8px 0 10px;color:#fff;font-style:italic;}
+.story-text p{font-family:Arial,sans-serif;font-size:12.5px;line-height:1.6;opacity:.9;}
+.trust-row{display:flex;gap:10px;margin:0 20px 28px;}
+.trust-chip{flex:1;background:var(--cream);border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:14px 8px;text-align:center;font-family:Arial,sans-serif;}
+.trust-chip b{display:block;font-size:17px;color:var(--maroon);}
+.trust-chip div{font-size:10px;opacity:.75;margin-top:2px;}
+
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;padding:0 20px;margin-bottom:6px;}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
+.gallery .big{grid-row:span 2;height:100%;}
+.gallery div{height:165px;overflow:hidden;border-radius:6px;}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.review-card{background:var(--cream);border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:16px;}
+.review-stars{color:var(--accent);font-size:13px;letter-spacing:2px;margin-bottom:6px;}
+.review-text{font-family:Arial,sans-serif;font-size:12.5px;line-height:1.55;color:#4a3a30;margin-bottom:10px;}
+.review-author{font-family:Arial,sans-serif;font-size:12px;font-weight:bold;color:var(--maroon);}
+.faq-wrap{font-family:Arial,sans-serif;}
+.faq-item{border-bottom:1px solid #eee;padding:14px 4px;cursor:pointer;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:bold;color:#4a3a30;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:12.5px;color:#6b5a4e;line-height:1.5;}
+.faq-item.open .faq-a{max-height:120px;padding-top:8px;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+.faq-arrow{transition:transform .3s;color:var(--accent);}
+
+.back-row{display:flex;align-items:center;gap:8px;padding:16px 20px 0;font-family:Arial,sans-serif;}
+.back-btn{font-size:13px;font-weight:bold;color:var(--maroon);background:none;border:none;cursor:pointer;}
+.cat-hero{height:150px;border-radius:10px;background-size:cover;background-position:center;margin:14px 20px 0;position:relative;overflow:hidden;}
+.cat-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.05));}
+.cat-hero h2{position:absolute;bottom:14px;left:16px;color:#fff;font-size:21px;z-index:1;font-style:italic;}
+
+.visit-block{margin:28px 20px;background:var(--cream);border-radius:10px;padding:22px;}
+.visit-block h3{font-size:17px;margin-bottom:12px;color:var(--maroon);font-style:italic;}
+.visit-row{display:flex;gap:10px;font-family:Arial,sans-serif;font-size:13px;margin-bottom:9px;color:#4a3a30;}
+.visit-block .call-line{margin-top:14px;display:flex;gap:10px;}
+.visit-block .call-line a{flex:1;text-align:center;padding:11px;border-radius:4px;font-size:13px;font-weight:bold;font-family:Arial,sans-serif;}
+.call-line .tel{background:var(--maroon);color:#fff;}
+.call-line .wa{background:var(--wa);color:#fff;}
+
+.foot{background:var(--ink);color:#b8a596;padding:30px 20px 36px;font-family:Arial,sans-serif;font-size:11.5px;}
+.foot-logo{display:flex;align-items:center;gap:7px;margin-bottom:16px;}
+.foot-logo .logo-text{color:#fff;}
+.foot-cols{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:18px;}
+.foot-col b{display:block;color:#fff;font-size:12px;margin-bottom:8px;}
+.foot-col div{padding:3px 0;opacity:.85;}
+.popular{border-top:1px solid rgba(255,255,255,.1);padding-top:16px;line-height:2;}
+.popular span{opacity:.7;margin-right:4px;}
+.copyright{text-align:center;opacity:.5;margin-top:16px;font-size:10.5px;}
+
+.theme-switch{position:absolute;top:14px;right:14px;z-index:5;display:flex;gap:6px;background:rgba(0,0,0,.3);padding:6px;border-radius:20px;}
+.theme-switch button{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.6);cursor:pointer;padding:0;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+const SHOP_CONFIG = {
+  shopName:"Thirubuvanam Cholan Silk Society", logoInitial:"T", tagline:"GI-Tagged Thirubuvanam Silk Sarees · Handloom Weavers Co-Op Society",
+  address:"21, Sannathi Street (Near Thirubuvanam Big Temple)", city:"Tirubuvanam, Tamil Nadu 612103",
+  timings:"Mon–Sat 9:00 AM – 8:00 PM · Sun 9:00 AM – 7:00 PM", rating:"4.2", reviewCount:"51",
+  whatsappNumber:"919791986767", theme:"maroon",
+  since:"1980", yearsText:"46+ yrs", customers:"5000+", purity:"GI-Tagged",
+  story:"Established in 1980 near the Thirubuvanam Big Temple, Thirubuvanam Cholan Silk Handloom Weavers Co.Op Society crafts GI-tagged filature silk sarees with fine zari borders, temple, mayilkan, and rudraksham motifs directly from member weavers.",
+  storyPhoto:"https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80",
+  heroPhotos:[
+    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1583391733956-6c78276477b2?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1610189844303-2e8dca4a7c1c?auto=format&fit=crop&w=1200&q=80"
+  ],
+  galleryPhotos:[
+    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1583391733956-6c78276477b2?auto=format&fit=crop&w=300&q=80",
+    "https://images.unsplash.com/photo-1610189844303-2e8dca4a7c1c?auto=format&fit=crop&w=300&q=80",
+    "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=300&q=80"
+  ],
+  reviews:[
+    {name:"Google Review", text:"Nice saree collection in all price ranges."},
+    {name:"Charm", text:"Beautiful store. Best place to get silk sarees especially for wedding! Latest designs with variety of colour combinations available."},
+    {name:"Justdial Reviewer", text:"Authentic GI-tagged Thirubuvanam handloom silk sarees with rich zari borders and lustrous filature silk."}
+  ],
+  faqs:[
+    {q:"Are your Thirubuvanam silk sarees GI-tagged and woven by society members?", a:"Yes — our society represents registered handloom weavers in Thirubuvanam producing authentic GI-tagged filature silk sarees."},
+    {q:"What makes Thirubuvanam silk sarees special?", a:"Both warp and weft use filature silk for high lustre, folded like an angavasthram with intricate temple, mayilkan, and rudraksham zari borders."},
+    {q:"Can I check wedding saree designs and prices on WhatsApp?", a:"Yes, tap Shop Now on any saree or WhatsApp Us to view available color combinations and pricing."},
+    {q:"What are your showroom hours near Thirubuvanam Big Temple?", a:"We are open Monday–Saturday 9:00 AM to 8:00 PM and Sunday 9:00 AM to 7:00 PM at 21, Sannathi Street, Tirubuvanam."}
+  ],
+  weeklyItems:[
+    {photo:"",title:"GI-Tagged Thirubuvanam Pattu",badge:"Bestseller",price:"₹11,500"},
+    {photo:"",title:"Mayilkan Zari Border Silk",badge:"Heritage",price:"₹14,200"},
+    {photo:"",title:"Wedding Muhurtham Silk Saree",badge:"Bridal",price:"₹18,500"},
+    {photo:"",title:"Rudraksham Motif Filature Silk",badge:"Classic",price:"₹12,800"},
+    {photo:"",title:"Temple Border Contrast Silk",badge:"Festive",price:"₹9,800"},
+    {photo:"",title:"Lightweight Co-Op Soft Silk",badge:"Trending",price:"₹7,200"},
+    {photo:"",title:"Parrot & Peacock Zari Pallu",badge:"Premium",price:"₹16,000"},
+    {photo:"",title:"Handloom Cotton Zari Saree",badge:"Daily Wear",price:"₹2,400"}
+  ],
+  categories:[
+    {slug:"thirubuvanam-pattu", name:"Thirubuvanam Pattu", photo:"",
+     items:[
+       {photo:"",title:"GI-Tagged Thirubuvanam Pattu",badge:"Bestseller",price:"₹11,500"},
+       {photo:"",title:"Mayilkan Zari Border Silk",badge:"Heritage",price:"₹14,200"},
+       {photo:"",title:"Rudraksham Motif Filature Silk",badge:"Classic",price:"₹12,800"},
+       {photo:"",title:"Temple Border Contrast Silk",badge:"Festive",price:"₹9,800"}
+     ]},
+    {slug:"wedding-bridal", name:"Wedding & Bridal", photo:"",
+     items:[
+       {photo:"",title:"Wedding Muhurtham Silk Saree",badge:"Bridal",price:"₹18,500"},
+       {photo:"",title:"Parrot & Peacock Zari Pallu",badge:"Premium",price:"₹16,000"},
+       {photo:"",title:"Grand Korvai Bridal Silk",badge:"Wedding",price:"₹21,000"},
+       {photo:"",title:"Maroon & Gold Zari Pattu",badge:"Classic",price:"₹15,500"}
+     ]},
+    {slug:"soft-silk", name:"Soft & Festive Silk", photo:"",
+     items:[
+       {photo:"",title:"Lightweight Co-Op Soft Silk",badge:"Trending",price:"₹7,200"},
+       {photo:"",title:"Pastel Filature Soft Silk",badge:"New",price:"₹7,800"},
+       {photo:"",title:"Floral Motif Festive Silk",badge:"Popular",price:"₹8,400"},
+       {photo:"",title:"Two-Tone Contrast Silk",badge:"Festive",price:"₹6,900"}
+     ]},
+    {slug:"cotton-handloom", name:"Handloom Cotton", photo:"",
+     items:[
+       {photo:"",title:"Handloom Cotton Zari Saree",badge:"Daily Wear",price:"₹2,400"},
+       {photo:"",title:"Temple Border Pure Cotton",badge:"Classic",price:"₹1,950"},
+       {photo:"",title:"Festive Cotton Silk Blend",badge:"New",price:"₹3,600"},
+       {photo:"",title:"Summer Weave Cotton Saree",badge:"Light",price:"₹1,800"}
+     ]},
+    {slug:"coop-bulk", name:"Society & Family Sets", photo:"",
+     items:[
+       {photo:"",title:"Wedding Family Pattu Set",badge:"Co-Op",price:"₹36,000"},
+       {photo:"",title:"Bridal Trousseau 3-Saree Pack",badge:"Bridal",price:"₹42,000"},
+       {photo:"",title:"Festive Gift Cotton Pack",badge:"Bulk",price:"₹14,500"},
+       {photo:"",title:"Traditional Angavasthram Silk",badge:"Classic",price:"₹12,000"}
+     ]}
+  ]
+};
+const REAL_PHOTOS=[
+  "https://images.unsplash.com/photo-1679006831648-7c9ea12e5807?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1610189013429-a703f4b245cf?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1619516388835-2b60acc4049e?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1610030469839-f909584b43f1?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1716504628105-bd76d91e85f2?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1610189026205-27510cfc52f8?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1609748341932-f0206c09412b?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1609748513078-9ff6232781c5?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1646979200020-941e1deb2670?auto=format&fit=crop&w=900&q=80"
+];
+let _pi=0;
+function nextPhoto(){return REAL_PHOTOS[_pi++ % REAL_PHOTOS.length];}
+SHOP_CONFIG.heroPhotos=[nextPhoto(),nextPhoto(),nextPhoto()];
+SHOP_CONFIG.weeklyItems.forEach(it=>{it.photo=nextPhoto();});
+SHOP_CONFIG.categories.forEach(c=>{c.photo=nextPhoto();c.items.forEach(it=>{it.photo=nextPhoto();});});
+const COLLECTION_COVERS=[
+  "https://images.unsplash.com/photo-1641699862936-be9f49b1c38d?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1727430228383-aa1fb59db8bf?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/flagged/photo-1551854716-8b811be39e7e?auto=format&fit=crop&w=900&q=80"
+];
+COLLECTION_COVERS.forEach((url,i)=>{if(SHOP_CONFIG.categories[i])SHOP_CONFIG.categories[i].photo=url;});
+SHOP_CONFIG.galleryPhotos=[
+  "https://www.ceebeedesignstudio.com/blogs/wp-content/uploads/2025/08/1-1.jpg",
+  "https://static.vecteezy.com/system/resources/thumbnails/047/250/445/small_2x/a-market-stall-filled-with-an-array-of-saris-in-every-color-and-pattern-imaginable-with-eager-customers-inspecting-each-one-photo.jpg",
+  "https://images.unsplash.com/photo-1771098206736-4cb6bc441dd3?auto=format&fit=crop&w=900&q=80",
+  "https://images.unsplash.com/photo-1731504801830-5b14ac73d7ca?auto=format&fit=crop&w=900&q=80"
+];
+SHOP_CONFIG.storyPhoto=nextPhoto();
+
+const p=new URLSearchParams(location.search);
+["shop","city","phone","rating","theme"].forEach(k=>{if(p.get(k)){if(k==="shop")SHOP_CONFIG.shopName=p.get(k);else if(k==="phone")SHOP_CONFIG.whatsappNumber=p.get(k);else SHOP_CONFIG[k]=p.get(k);}});
+document.documentElement.setAttribute("data-theme", SHOP_CONFIG.theme==="maroon"?"":SHOP_CONFIG.theme);
+
+const waIcon=`<svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1120.2 12 8.2 8.2 0 0112 20.2z"/></svg>`;
+const logoSvg=`<svg viewBox="0 0 24 24" fill="var(--maroon)"><circle cx="12" cy="12" r="11" fill="none" stroke="var(--maroon)" stroke-width="1.3"/><path d="M12 5c2.5 2 4 4.5 4 7.5 0 2.5-1.8 4.5-4 4.5s-4-2-4-4.5C8 9.5 9.5 7 12 5z"/></svg>`;
+function waLink(t){return `https://wa.me/${SHOP_CONFIG.whatsappNumber}?text=${encodeURIComponent(t)}`;}
+
+function itemCard(it,extraClass){
+  return `<div class="item-card${extraClass||''}">
+    <div class="item-photo" style="background-image:url('${it.photo}')"><span class="item-badge">${it.badge}</span><span class="heart-ic">♡</span></div>
+    <div class="item-body">
+      <div class="item-title">${it.title}</div>
+      <div class="item-price">${it.price} <span>per saree</span></div>
+      <a class="shop-now" href="${waLink(`Hi, I'm interested in the ${it.title} (${it.price}) — can you send more photos and confirm availability?`)}" target="_blank" rel="noopener">Shop Now</a>
+    </div>
+  </div>`;
+}
+
+const navHtml=`<div class="topbar"><div class="brand" onclick="goHome()">${SHOP_CONFIG.shopName}</div><div class="navlinks"><a onclick="goHome()">Home</a><a href="#home-collection">Collection</a><a href="#home-story">Our Story</a><a href="#home-testimonials">Testimonials</a><a href="#home-visit">Visit</a></div></div>`;
+const heroSlidesHtml=SHOP_CONFIG.heroPhotos.map((ph,i)=>`<div class="hero-slide${i===0?' active':''}" style="background-image:url('${ph}')"></div>`).join("");
+const catsHtml=SHOP_CONFIG.categories.map(c=>`<button class="cat-card" onclick="openCategory('${c.slug}')"><div class="circle" style="background-image:url('${c.photo}')"></div><span>${c.name}</span></button>`).join("");
+const weeklyHtml=SHOP_CONFIG.weeklyItems.map((it,i)=>itemCard(it, i>=6?' hidden':'')).join("");
+const archHtml=SHOP_CONFIG.categories.slice(0,4).map(c=>`<div class="arch-card" onclick="openCategory('${c.slug}')"><div class="arch-photo" style="background-image:url('${c.photo}')"><div class="label">${c.name}</div></div><div class="shopnow">Shop Now</div></div>`).join("");
+const galleryHtml=`<img class="big" src="${SHOP_CONFIG.galleryPhotos[0]}">`+SHOP_CONFIG.galleryPhotos.slice(1).map(g=>`<div><img src="${g}"></div>`).join("");
+const reviewsHtml=SHOP_CONFIG.reviews.map(r=>`<div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"${r.text}"</div><div class="review-author">${r.name}</div></div>`).join("");
+const faqHtml=SHOP_CONFIG.faqs.map((f,i)=>`<div class="faq-item" onclick="toggleFaq(${i})"><div class="faq-q">${f.q}<span class="faq-arrow">⌄</span></div><div class="faq-a">${f.a}</div></div>`).join("");
+
+const homeView=`
+${navHtml}
+<div class="hero">
+  ${heroSlidesHtml}
+  <div class="hero-overlay"></div>
+  <div class="theme-switch">
+    <button style="background:#7a1428" onclick="setTheme('')"></button>
+    <button style="background:#1f6b4d" onclick="setTheme('emerald')"></button>
+    <button style="background:#8a2a6b" onclick="setTheme('plum')"></button>
+    <button style="background:#0f2340" onclick="setTheme('navy')"></button>
+  </div>
+  <div class="hero-content">
+    <h1>${SHOP_CONFIG.shopName}</h1>
+    <div class="tagline">${SHOP_CONFIG.tagline}</div>
+    <div class="hero-cta">
+      <a class="wa" href="${waLink('Hi, I would like to see your latest saree collection and prices.')}" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="ghost" href="#home-collection">View Collection</a>
+    </div>
+  </div>
+</div>
+<div class="rating-block">
+  <div class="rating-num">${SHOP_CONFIG.rating}</div>
+  <div class="rating-hearts">♥♥♥♥♥</div>
+  <div class="rating-sub">${SHOP_CONFIG.rating} out of 5 stars based on ${SHOP_CONFIG.reviewCount} reviews</div>
+</div>
+<div class="section" id="home-collection">
+  <div class="section-head"><div class="eyebrow">Our Collections</div><h2>New This Week</h2><p>Fresh stock, tap any saree to confirm on WhatsApp.</p></div>
+  <div class="grid" id="weeklyGrid">${weeklyHtml}</div>
+  ${SHOP_CONFIG.weeklyItems.length>6?'<button class="view-more" id="weeklyMoreBtn" onclick="showAllWeekly()">Show More Sarees ↓</button>':''}
+</div>
+<div class="section">
+  <div class="section-head"><div class="eyebrow">Browse</div><h2>Shop by Category</h2></div>
+  <div class="cats-wrap">${catsHtml}</div>
+</div>
+<div class="section">
+  <div class="section-head"><div class="eyebrow">Collections</div><h2>Explore Other Collections</h2><p>Celebrate tradition with our exquisite range.</p></div>
+  <div class="arch-row">${archHtml}</div>
+</div>
+<div class="story" id="home-story">
+  <div class="story-bg" style="background-image:url('${SHOP_CONFIG.storyPhoto}')"></div>
+  <div class="story-text">
+    <div class="eyebrow">Since ${SHOP_CONFIG.since}</div>
+    <h2>Weaving Silk Stories Through Generations</h2>
+    <p>${SHOP_CONFIG.story}</p>
+  </div>
+</div>
+<div class="trust-row">
+  <div class="trust-chip"><b>${SHOP_CONFIG.yearsText}</b><div>In business</div></div>
+  <div class="trust-chip"><b>${SHOP_CONFIG.customers}</b><div>Happy customers</div></div>
+  <div class="trust-chip"><b>${SHOP_CONFIG.purity}</b><div>Pure silk</div></div>
+</div>
+<div class="section"><div class="section-head"><div class="eyebrow">Gallery</div><h2>Inside the Shop</h2></div></div>
+<div class="gallery">${galleryHtml}</div>
+<div class="section" id="home-testimonials"><div class="section-head"><div class="eyebrow">Reviews</div><h2>What Customers Say</h2></div><div class="reviews-grid">${reviewsHtml}</div></div>
+<div class="section">
+  <div class="section-head"><div class="eyebrow">FAQ</div><h2>People Also Ask</h2></div>
+  <div class="faq-wrap">${faqHtml}</div>
+</div>
+<div class="visit-block" id="home-visit">
+  <h3>Visit the Shop</h3>
+  <div class="visit-row">📍 ${SHOP_CONFIG.address}, ${SHOP_CONFIG.city}</div>
+  <div class="visit-row">🕒 ${SHOP_CONFIG.timings}</div>
+  <div class="call-line">
+    <a class="tel" href="tel:+${SHOP_CONFIG.whatsappNumber}">☎ Call Now</a>
+    <a class="wa" href="${waLink('Hi, I would like to know more about your shop and current collection.')}" target="_blank" rel="noopener">WhatsApp Us</a>
+  </div>
+</div>
+<div class="foot">
+  <div class="foot-logo"><span class="logo-text" style="color:#fff;font-size:15px;font-weight:bold">${SHOP_CONFIG.shopName}</span></div>
+  <div class="foot-cols">
+    <div class="foot-col"><b>About</b><div>Know Us</div><div>Careers</div><div>Reviews</div></div>
+    <div class="foot-col"><b>Policies</b><div>FAQ</div><div>Shipping</div><div>Returns</div></div>
+    <div class="foot-col"><b>Connect</b><div>${SHOP_CONFIG.whatsappNumber}</div><div>${SHOP_CONFIG.city}</div></div>
+  </div>
+  <div class="popular"><span>Popular:</span>GI-Tagged Thirubuvanam Silk · Mayilkan Zari · Wedding Muhurtham · Filature Soft Silk · Handloom Cotton</div>
+  <div class="copyright">© 2026 ${SHOP_CONFIG.shopName}. All rights reserved.</div>
+</div>
+`;
+
+function categoryView(cat){
+  const shown=cat.items.slice(0,5).map((it,i)=>itemCard(it, i>=4?' hidden':'')).join("");
+  return `
+  ${navHtml}
+  <div class="back-row"><button class="back-btn" onclick="goHome()">← Back to Home</button></div>
+  <div class="cat-hero" style="background-image:url('${cat.photo}')"><h2>${cat.name}</h2></div>
+  <div class="section">
+    <div class="section-head"><div class="eyebrow">Category</div><h2>${cat.name} Collection</h2><p>${cat.items.length} pieces in stock · tap to ask on WhatsApp.</p></div>
+    <div class="grid" id="catGrid">${shown}</div>
+    ${cat.items.length>4?'<button class="view-more" id="catMoreBtn" onclick="showAllCategory()">View Full Category ↓</button>':''}
+  </div>
+  <div class="visit-block">
+    <h3>Visit the Shop</h3>
+    <div class="visit-row">📍 ${SHOP_CONFIG.address}, ${SHOP_CONFIG.city}</div>
+    <div class="call-line">
+      <a class="tel" href="tel:+${SHOP_CONFIG.whatsappNumber}">☎ Call Now</a>
+      <a class="wa" href="${waLink(`Hi, I want to see more from your ${cat.name} collection.`)}" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="foot"><div class="foot-logo"><span class="logo-text" style="color:#fff;font-size:15px;font-weight:bold">${SHOP_CONFIG.shopName}</span></div><div class="copyright">© 2026 ${SHOP_CONFIG.shopName}.</div></div>
+  `;
+}
+
+const app=document.getElementById("app");
+function render(){app.innerHTML=homeView;attachHome();}
+function attachHome(){
+  let si=0;const slides=document.querySelectorAll(".hero-slide");
+  if(window._slideTimer)clearInterval(window._slideTimer);
+  if(slides.length>1){window._slideTimer=setInterval(()=>{slides[si].classList.remove("active");si=(si+1)%slides.length;slides[si].classList.add("active");},4000);}
+}
+function showAllWeekly(){document.querySelectorAll("#weeklyGrid .item-card.hidden").forEach(el=>el.classList.remove("hidden"));document.getElementById("weeklyMoreBtn").style.display="none";}
+function showAllCategory(){document.querySelectorAll("#catGrid .item-card.hidden").forEach(el=>el.classList.remove("hidden"));document.getElementById("catMoreBtn").style.display="none";}
+function setTheme(t){document.documentElement.setAttribute("data-theme",t);}
+function goHome(){location.hash="home";}
+function openCategory(slug){location.hash="cat-"+slug;}
+function toggleFaq(i){document.querySelectorAll(".faq-item")[i].classList.toggle("open");}
+function router(){
+  const hash=location.hash.replace("#","")||"home";
+  if(hash.startsWith("cat-")){
+    const cat=SHOP_CONFIG.categories.find(c=>c.slug===hash.replace("cat-",""));
+    if(cat){app.innerHTML=categoryView(cat);window.scrollTo(0,0);return;}
+  }
+  if(hash.startsWith("home-")){
+    if(!document.getElementById("home-collection"))render();
+    const t=document.getElementById(hash);
+    if(t)setTimeout(()=>t.scrollIntoView({behavior:"smooth"}),50);
+    return;
+  }
+  render();window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",router);
+router();
+</script>
+</body>
+</html>
